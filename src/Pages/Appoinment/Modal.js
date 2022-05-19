@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const Modal = ({ treatment, date, setTreatment }) => {
-    const { _id, slots, name } = treatment;
+    const { _id, slots, name, price } = treatment;
     const [user, loading, error] = useAuthState(auth);
     const formattedDate = format(date, 'PP')
     const handleSubmit = (even) => {
@@ -18,6 +18,7 @@ const Modal = ({ treatment, date, setTreatment }) => {
             treatment: name,
             date: formattedDate,
             slot,
+            price,
             patient: user.email,
             phone: even.target.phone.value
         }
